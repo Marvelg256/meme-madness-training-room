@@ -1,0 +1,16 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 3D Offset Background Box -->
+  <rect x="3" y="3" width="36" height="36" rx="8" fill="black" />
+  <!-- Main Logo Box -->
+  <rect width="36" height="36" rx="8" fill="#FF6A00" stroke="black" stroke-width="2" />
+  <!-- Letter M -->
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="sans-serif" font-weight="900" font-size="24" style="font-weight:900">M</text>
+  <!-- Subtle Shine Gloss -->
+  <path d="M0 8C0 3.58172 3.58172 0 8 0H28C32.4183 0 36 3.58172 36 8V28C36 32.4183 32.4183 36 28 36H8C3.58172 36 0 32.4183 0 28V8Z" fill="url(#gloss)" />
+  <defs>
+    <linearGradient id="gloss" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.2" />
+      <stop offset="1" stop-color="white" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+</svg>
