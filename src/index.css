@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Bebas Neue', Impact, sans-serif;
+    --font-heading: 'Space Grotesk', system-ui, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    --color-ink: #0C0A0F;
+    --color-surface: #16131A;
+    --color-surface-card: #1C1822;
+    --color-surface-border: #2E2638;
+    --color-cream: #FDFBF7;
+    --color-cream-dim: #D1C9BD;
+    --color-orange: #FF6A00;
+    --color-orange-hover: #FF8533;
+    --color-yellow: #FFD23F;
+    --color-up: #00F5D4;
+    --color-down: #FF007F;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+    overflow-x: hidden;
+  }
+
+  h1, h2, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+  }
+
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-mono-data {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Halftone and Texture Patterns */
+.bg-halftone {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  background-size: 14px 14px;
+}
+
+.bg-halftone-orange {
+  background-image: radial-gradient(rgba(255, 106, 0, 0.15) 1.5px, transparent 0);
+  background-size: 12px 12px;
+}
+
+.bg-retro-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+.bg-cutting-mat {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 245, 212, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 245, 212, 0.05) 1px, transparent 1px);
+}
+
+/* Card Foil and Holographic Sheen */
+.foil-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.foil-sheen::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 106, 0, 0.08) 25%,
+    rgba(0, 245, 212, 0.12) 45%,
+    rgba(255, 0, 127, 0.1) 60%,
+    transparent 80%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* Physical Shadow Offsets */
+.shadow-brutal-sm {
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
+.shadow-brutal {
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+
+.shadow-brutal-lg {
+  box-shadow: 7px 7px 0px 0px #000000;
+}
+
+.shadow-brutal-orange {
+  box-shadow: 5px 5px 0px 0px #FF6A00;
+}
+
+.shadow-brutal-up {
+  box-shadow: 5px 5px 0px 0px #00F5D4;
+}
+
+.shadow-brutal-down {
+  box-shadow: 5px 5px 0px 0px #FF007F;
+}
+
+/* Sticker Drop Shadow */
+.sticker-shadow {
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.55)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+}
+
+/* Perspective 3D Card */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Custom Scanlines */
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Meme Madness: The Training Room",
+  "description": "An interactive arcade, prediction market, and trading card training room inspired by Meme Madness.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
