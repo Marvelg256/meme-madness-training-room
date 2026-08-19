@@ -10,7 +10,6 @@ import { HomeView } from "./views/HomeView";
 import { ChallengeView } from "./views/ChallengeView";
 import { UnderdogView } from "./views/UnderdogView";
 import { QuizView } from "./views/QuizView";
-import { DesignSystemView } from "./views/DesignSystemView";
 import { BrandLogo } from "./components/BrandLogo";
 import { sound } from "./utils/audio";
 
@@ -63,8 +62,6 @@ export default function App() {
         {currentPage === "underdog" && <UnderdogView />}
 
         {currentPage === "quiz" && <QuizView />}
-
-        {currentPage === "system" && <DesignSystemView />}
       </main>
 
       {/* 3. FOOTER */}
@@ -98,13 +95,6 @@ export default function App() {
               className="hover:text-[#FF6A00] transition-colors"
             >
               Rules Drill
-            </button>
-            <span>•</span>
-            <button
-              onClick={() => handleNavigate("system")}
-              className="text-[#6E637B] hover:text-[#D1C9BD] transition-colors text-[11px]"
-            >
-              Tokens & Spec
             </button>
           </div>
         </div>

@@ -6,7 +6,7 @@ export type VisualDirection =
   | "sticker"
   | "fight";
 
-export type AppPage = "home" | "challenge" | "underdog" | "quiz" | "system";
+export type AppPage = "home" | "challenge" | "underdog" | "quiz";
 
 export type PredictionDirection = "UP" | "DOWN";
 
