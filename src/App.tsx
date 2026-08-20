@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AppPage } from "./types";
 import { SiteHeader } from "./components/SiteHeader";
 import { HomeView } from "./views/HomeView";
@@ -14,9 +14,25 @@ import { BrandLogo } from "./components/BrandLogo";
 import { sound } from "./utils/audio";
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<AppPage>("home");
+  const getPageFromPath = (): AppPage => {
+    const path = window.location.pathname.substring(1);
+    if (path === "challenge" || path === "underdog" || path === "quiz") {
+      return path;
+    }
+    return "home";
+  };
+
+  const [currentPage, setCurrentPage] = useState<AppPage>(getPageFromPath());
   const [credits, setCredits] = useState<number>(20000);
   const [streak, setStreak] = useState<number>(0);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(getPageFromPath());
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   const handleResetCredits = () => {
     setCredits(20000);
@@ -26,6 +42,7 @@ export default function App() {
   const handleNavigate = (page: AppPage) => {
     sound.playClick();
     setCurrentPage(page);
+    window.history.pushState({}, "", page === "home" ? "/" : `/${page}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
