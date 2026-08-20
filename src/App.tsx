@@ -87,9 +87,16 @@ export default function App() {
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <BrandLogo onClick={() => handleNavigate("home")} />
             <span className="hidden sm:inline text-[#3D354A]">|</span>
-            <p className="font-mono text-xs text-[#6E637B] text-center sm:text-left">
-              Unofficial community training sandbox inspired by Cade Market's Meme Madness.
-            </p>
+            <div className="flex flex-col gap-1">
+              <p className="font-mono text-xs text-[#6E637B] text-center sm:text-left">
+                Unofficial community training sandbox inspired by Cade Market's Meme Madness.
+              </p>
+              <div className="flex items-center gap-3 font-mono text-[10px] text-[#D1C9BD] justify-center sm:justify-start">
+                <span className="text-[#3D354A]">MM-01 // COMMUNITY BUILD</span>
+                <a href="https://x.com/mazin_build" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF6A00] transition-colors underline decoration-dotted">BUILT BY @MAZIN_BUILD ↗</a>
+                <a href="https://github.com/Marvelg256/meme-madness-training-room" target="_blank" rel="noopener noreferrer" className="hover:text-[#00F5D4] transition-colors underline decoration-dotted">SOURCE ↗</a>
+              </div>
+            </div>
           </div>
 
           <div className="flex items-center gap-4 font-mono text-xs text-[#D1C9BD]">

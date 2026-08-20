@@ -26,6 +26,7 @@ interface HomeViewProps {
 
 export function HomeView({ onNavigate, direction }: HomeViewProps) {
   const [selectedCharacter, setSelectedCharacter] = useState<CharacterProfile | null>(CHARACTERS[0]);
+  const [activeTouchCard, setActiveTouchCard] = useState<string | null>(null);
 
   // Apply distinct visual flavors based on direction
   const isPoster = direction === "poster";
@@ -33,6 +34,14 @@ export function HomeView({ onNavigate, direction }: HomeViewProps) {
   const isArcade = direction === "arcade";
   const isSticker = direction === "sticker";
   const isFight = direction === "fight";
+
+  const handleModuleClick = (e: React.MouseEvent, module: TrainingModule) => {
+    if (activeTouchCard === module.id) {
+      onNavigate(module.page);
+    } else {
+      setActiveTouchCard(module.id);
+    }
+  };
 
   return (
     <div className="relative pb-24">
@@ -205,15 +214,20 @@ export function HomeView({ onNavigate, direction }: HomeViewProps) {
             return (
               <div
                 key={module.id}
-                onClick={() => onNavigate(module.page)}
+                onClick={(e) => handleModuleClick(e, module)}
                 className={`
                   group relative flex flex-col justify-between rounded-2xl border-2 bg-[#1C1822] p-6 shadow-brutal
-                  transition-all duration-200 hover:-translate-y-1 hover:shadow-brutal-lg cursor-pointer
+                  transition-all duration-200 cursor-pointer
                   ${themeBorder}
+                  ${
+                    activeTouchCard === module.id
+                      ? "-translate-y-1 shadow-brutal-lg"
+                      : "hover:-translate-y-1 hover:shadow-brutal-lg"
+                  }
                 `}
               >
                 {/* Top Module Header */}
-                <div>
+                <div className={activeTouchCard === module.id ? "opacity-100" : "group-hover:opacity-100"}>
                   <div className="flex items-center justify-between border-b border-[#2E2838] pb-3">
                     <span className="font-mono text-xs font-black text-[#6E637B]">
                       MODULE {module.number}
@@ -227,7 +241,7 @@ export function HomeView({ onNavigate, direction }: HomeViewProps) {
                   <div className="mt-4 flex items-center gap-3">
                     <span className="text-3xl">{module.icon}</span>
                     <div>
-                      <h3 className="font-display text-2xl text-[#FDFBF7] group-hover:text-[#FF6A00] transition-colors">
+                      <h3 className={`font-display text-2xl text-[#FDFBF7] transition-colors ${activeTouchCard === module.id ? "text-[#FF6A00]" : "group-hover:text-[#FF6A00]"}`}>
                         {module.title}
                       </h3>
                       <span className="font-mono text-xs text-[#D1C9BD]">
@@ -247,7 +261,7 @@ export function HomeView({ onNavigate, direction }: HomeViewProps) {
                     {module.edition}
                   </span>
                   
-                  <div className="flex items-center gap-1 font-heading text-xs font-black text-[#FF6A00] group-hover:translate-x-1 transition-transform">
+                  <div className={`flex items-center gap-1 font-heading text-xs font-black text-[#FF6A00] transition-transform ${activeTouchCard === module.id ? "translate-x-1" : "group-hover:translate-x-1"}`}>
                     <span>ENTER DRILL</span>
                     <ArrowRight className="h-4 w-4" />
                   </div>
